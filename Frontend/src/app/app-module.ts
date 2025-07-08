@@ -10,12 +10,16 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
+import { Login } from './auth/auth-component/login/login';
+import { Signup } from './auth/auth-component/signup/signup';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Login,
+    Signup
   ],
   imports: [
     BrowserModule,
