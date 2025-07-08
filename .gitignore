@@ -1,0 +1,16 @@
+# Angular
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.angular/
+
+# Spring Boot
+Backend/target/
+Backend/.idea/
+Backend/.classpath
+Backend/.project
+Backend/.settings/
+
+# System files
+.DS_Store
+*.log
+*.env
