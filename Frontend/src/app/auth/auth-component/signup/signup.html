@@ -1,1 +1,57 @@
-<p>signup works!</p>
+<div class="bg">
+    <nz-spin [nzSpinning]="isSpinning" nzSize="large" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <div nz-col nzSpan="24">
+                        <h1>Sign Up</h1>
+                    </div>
+                </div>
+
+                <form nz-form [formGroup]="signupForm" (ngSubmit)="signup()">
+
+                    <!-- Name -->
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzValidateStatus]="signupForm.get('name')!"
+                            [nzErrorTip]="getNameError()">
+                            <input nz-input placeholder="Name" formControlName="name" />
+                        </nz-form-control>
+
+                    </nz-form-item>
+
+                    <!-- Email -->
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzValidateStatus]="signupForm.get('email')!"
+                            [nzErrorTip]="getEmailError()">
+                            <input nz-input placeholder="E-mail" formControlName="email" />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <!-- Password -->
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzValidateStatus]="signupForm.get('password')!"
+                            [nzErrorTip]="getPasswordError()">
+                            <input nz-input placeholder="Password" type="password" formControlName="password" />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <!-- Confirm Password -->
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzValidateStatus]="signupForm.get('confirmPassword')!"
+                            [nzErrorTip]="getConfirmPasswordError()">
+                            <input nz-input placeholder="Confirm Password" type="password"
+                                formControlName="confirmPassword" />
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <!-- Submit -->
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+                        htmlType="submit">
+                        Register
+                    </button>
+                    <div class="login-form-margin">Or <a routerLink="/login">Login now!</a></div>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>

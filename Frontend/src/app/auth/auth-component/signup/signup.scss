@@ -1,0 +1,214 @@
+/* Background wrapper */
+.bg {
+  background-color: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Centered flex wrapper */
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form card */
+.child {
+  background-color: #ffffff;
+  padding: 48px 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  animation: slideUp 0.8s ease-in-out;
+}
+
+/* Slide-up entrance */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: #001529;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form layout */
+.nz-form-control {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Input fields */
+input[nz-input] {
+  height: 42px;
+  padding: 0 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+/* Dynamic border for valid inputs */
+input[nz-input].ng-valid.ng-touched {
+  border: 1px solid #52c41a !important;
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+}
+
+/* Dynamic border for invalid inputs */
+input[nz-input].ng-invalid.ng-touched {
+  border: 1px solid #ff4d4f !important;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+
+/* Error messages */
+.nz-form-control .ant-form-explain,
+.nz-form-control .ant-form-item-explain {
+  color: #ff4d4f;
+  font-size: 13px;
+  margin-top: 4px;
+  animation: fadeInError 0.3s ease;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Register button */
+.login-form-button {
+  width: 100%;
+  height: 42px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  margin-top: 12px;
+  background-color: #001529;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form-button:hover {
+  transform: scale(1.03);
+  background-color: #01315f;
+  box-shadow: 0 4px 12px rgba(0, 21, 41, 0.2);
+}
+
+/* Below-button text */
+.login-form-margin {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* Link styling */
+a {
+  color: #0465c0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0056a6;
+}
+
+/* Spinner wrapper */
+nz-spin {
+  width: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .child {
+    padding: 32px 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input[nz-input] {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .login-form-button {
+    font-size: 15px;
+    height: 40px;
+  }
+}
+
+@media (forced-colors: active) {
+  body {
+    background: Window;
+    color: WindowText;
+  }
+
+  input,
+  button {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border-color: GrayText;
+    forced-color-adjust: none; /* allows full custom control */
+  }
+
+  .login-form-button {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

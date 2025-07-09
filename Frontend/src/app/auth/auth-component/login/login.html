@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="bg">
+  <nz-spin [nzSpinning]="isSpinning" nzSize="large" nzTip="Working...">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="imgDiv">
+          <div nz-col nzSpan="24">
+            <h1>Login</h1>
+          </div>
+        </div>
+
+        <form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
+
+          <!-- Email -->
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzValidateStatus]="loginForm.get('email')!" [nzErrorTip]="getEmailError()">
+              <input nz-input placeholder="E-mail" formControlName="email" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Password -->
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzValidateStatus]="loginForm.get('password')!"
+              [nzErrorTip]="getPasswordError()">
+              <input nz-input placeholder="Password" type="password" formControlName="password" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Submit -->
+          <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" htmlType="submit">
+            Login
+          </button>
+          <div class="login-form-margin">Or <a routerLink="/signup">Register now!</a></div>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

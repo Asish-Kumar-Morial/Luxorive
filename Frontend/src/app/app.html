@@ -1,1 +1,55 @@
+<nz-header class="main-header" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <div class="header-container" nz-row nzType="flex" nzAlign="middle" nzJustify="space-between">
+
+    <!-- Logo + Title -->
+    <div class="logo" nz-col>
+        <img src="Luxorive.avif" alt="Logo" class="logo-image" />
+        <span class="site-name">Luxorive</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" nz-col>
+      <a nz-button nzType="link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+
+  </div>
+</nz-header>
+
+<nz-header class="main-header" *ngIf="isAdminLoggedIn">
+  <div class="header-container" nz-row nzType="flex" nzAlign="middle" nzJustify="space-between">
+
+    <!-- Logo + Title -->
+    <div class="logo" nz-col>
+        <img src="Luxorive.avif" alt="Logo" class="logo-image" />
+        <span class="site-name">Luxorive</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" nz-col>
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+
+  </div>
+</nz-header>
+
+<nz-header class="main-header" *ngIf="isCustomerLoggedIn">
+  <div class="header-container" nz-row nzType="flex" nzAlign="middle" nzJustify="space-between">
+
+    <!-- Logo + Title -->
+    <div class="logo" nz-col>
+        <img src="Luxorive.avif" alt="Logo" class="logo-image" />
+        <span class="site-name">Luxorive</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" nz-col>
+      <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+
+  </div>
+</nz-header>
+
 <router-outlet></router-outlet>
