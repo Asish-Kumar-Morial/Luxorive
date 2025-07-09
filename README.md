@@ -11,7 +11,7 @@ Luxorive is a modern **car buying and selling platform** that connects vehicle b
 | Frontend  | Angular, NG-ZORRO (UI Library)      |
 | Backend   | Spring Boot (REST APIs)             |
 | Database  | MySQL                               |
-| Styling   | SCSS			          |
+| Styling   | SCSS			                      |
 | Tooling   | Git, GitHub, Postman (API testing)  |
 
 ---
@@ -23,5 +23,5 @@ Luxorive is a modern **car buying and selling platform** that connects vehicle b
 - 👤 **User Authentication** – Login & registration flow
 - 📊 **Dashboard View** – Statistics and summary cards
 - 📥 **Contact & Inquiry System** (planned)
-- 🔐 **Secure APIs** – Token-based JWT authentication (optional add-on)
+- 🔐 **Secure APIs** – Token-based JWT authentication
 
