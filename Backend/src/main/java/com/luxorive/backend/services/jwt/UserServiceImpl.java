@@ -19,8 +19,11 @@ public class UserServiceImpl implements UserService {
             @Override
             public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
                 return userRepository.findUserByEmail(email)
-                        .orElseThrow(()-> new UsernameNotFoundException("User Not Found"));
+                        .map(CustomUserDetails::new) // ✅ Wrap into CustomUserDetails
+                        .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
             }
         };
     }
+
+
 }
