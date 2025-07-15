@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService{
             car.setTransmission(carDTO.getTransmission());
             car.setType(carDTO.getType());
             car.setSold(false);
-            car.setYear(carDTO.getYear());
+            car.setYear(carDTO.getModel());
             car.setImg(carDTO.getImg().getBytes());
             car.setUser(optionalUser.get());
             carRepository.save(car);
@@ -82,7 +82,7 @@ public class CustomerServiceImpl implements CustomerService{
             car.setColor(carDTO.getColor());
             car.setTransmission(carDTO.getTransmission());
             car.setType(carDTO.getType());
-            car.setYear(carDTO.getYear());
+            car.setYear(carDTO.getModel());
             if (carDTO.getImg() != null)
                 car.setImg(carDTO.getImg().getBytes());
             carRepository.save(car);
@@ -145,13 +145,17 @@ public class CustomerServiceImpl implements CustomerService{
         Optional<Bid> optionalBid = bidRepository.findById(bidId);
         if (optionalBid.isPresent()) {
             Bid existingBid = optionalBid.get();
+            Car car = optionalBid.get().getCar();
             if (existingBid.getCar().getSold()) {
                 return false;
             }
-            if (Objects.equals(status, "Approve"))
+            if (Objects.equals(status, "Approve")) {
                 existingBid.setBidStatus(BidStatus.APPROVED);
-            else
+                car.setSold(true);
+            }
+            else {
                 existingBid.setBidStatus(BidStatus.REJECTED);
+            }
             bidRepository.save(existingBid);
             return true;
         }

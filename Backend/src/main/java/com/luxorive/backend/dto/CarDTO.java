@@ -24,6 +24,8 @@ public class CarDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date year;
 
+    private Date model;
+
     private Boolean sold;
 
     private Long price;

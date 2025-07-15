@@ -1,1 +1,23 @@
-<p>admin-dashboard works!</p>
+<div class="car-container" [class.card-hovered]="hoveredCard !== null">
+  <div
+    class="car-card"
+    *ngFor="let car of cars; let i = index"
+    [class.active]="hoveredCard === i"
+    (mouseenter)="hoveredCard = i"
+    (mouseleave)="hoveredCard = null"
+  >
+    <img [src]="'data:image/jpeg;base64,' + car.returnedImg" alt="Car Image" class="car-image" />
+
+    <div class="car-details">
+      <h2 class="car-title">{{car.brand}} - {{car.name}}</h2>
+      <p class="car-description">{{car.description}}</p>
+      <div class="car-meta">
+        <p><b>Price:</b> ${{car.price}}</p>
+        <p><b>Color:</b> {{car.color}}</p>
+        <p><b>Transmission:</b> {{car.transmission}}</p>
+        <p><b>Type:</b> {{car.type}}</p>
+        <p><b>Year:</b> {{car.year | date: 'yyyy'}}</p>
+      </div>
+    </div>
+  </div>
+</div>

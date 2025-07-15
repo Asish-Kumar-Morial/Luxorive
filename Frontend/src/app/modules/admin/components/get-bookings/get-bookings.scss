@@ -1,0 +1,75 @@
+.bids-container {
+  padding: 40px 20px;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #003973;
+    margin-bottom: 30px;
+  }
+
+  nz-table {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .status {
+    font-weight: 600;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+
+    &.approved {
+      color: #389e0d;
+      background-color: #f6ffed;
+      border: 1px solid #b7eb8f;
+    }
+
+    &.rejected {
+      color: #0050b3;
+      background-color: #e6f7ff;
+      border: 1px solid #91d5ff;
+    }
+
+    &.pending {
+      color: #a8071a;
+      background-color: #fff1f0;
+      border: 1px solid #ffa39e;
+    }
+  }
+
+  .action-btn {
+    margin-right: 10px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+
+    &.approve-btn {
+      background-color: #52c41a;
+      border: none;
+      color: white;
+
+      &:hover {
+        background-color: #389e0d;
+      }
+    }
+
+    &.reject-btn {
+      background-color: #ff4d4f;
+      border: none;
+      color: white;
+
+      &:hover {
+        background-color: #cf1322;
+      }
+    }
+  }
+}

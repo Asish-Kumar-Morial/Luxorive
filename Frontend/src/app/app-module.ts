@@ -16,6 +16,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 registerLocaleData(en);
 
@@ -33,7 +34,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzFormModule,
     NzButtonModule,
-    NzLayoutModule
+    NzLayoutModule,
+    NzDatePickerModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

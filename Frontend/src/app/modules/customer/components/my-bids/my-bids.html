@@ -1,0 +1,44 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Loading your bids...">
+  <div class="bids-container">
+    <h2 class="title">My Bids</h2>
+
+    <nz-table
+      #basicTable
+      [nzData]="bids"
+      [nzPageSize]="5"
+      [nzShowPagination]="true"
+      [nzBordered]="true"
+      [nzSize]="'middle'">
+
+      <thead>
+        <tr>
+          <th>Car Name</th>
+          <th>Car Brand</th>
+          <th>Seller</th>
+          <th>Bid Price (₹)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let booking of basicTable.data">
+          <td>{{ booking.carName }}</td>
+          <td>{{ booking.carBrand }}</td>
+          <td>{{ booking.sellerName }}</td>
+          <td>{{ booking.price }}</td>
+          <td>
+            <span
+              class="status"
+              [ngClass]="{
+                approved: booking.bidStatus === 'APPROVED',
+                rejected: booking.bidStatus === 'REJECTED',
+                pending: booking.bidStatus === 'PENDING'
+              }">
+              {{ booking.bidStatus }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</nz-spin>

@@ -1,0 +1,38 @@
+<div class="car-container">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <div class="car-box-row">
+      <!-- Left: Car Image -->
+      <div class="car-image-section">
+        <img [src]="'data:image/jpeg;base64,' + car.returnedImg" alt="Car Image" class="car-image" />
+      </div>
+
+      <!-- Middle: Car Details -->
+      <div class="car-details-section">
+        <h2>{{ car.brand }} - {{ car.name }}</h2>
+        <p>{{ car.description }}</p>
+        <div class="car-meta">
+          <p><b>Price:</b> ₹{{ car.price }}</p>
+          <p><b>Color:</b> {{ car.color }}</p>
+          <p><b>Transmission:</b> {{ car.transmission }}</p>
+          <p><b>Type:</b> {{ car.type }}</p>
+          <p><b>Model Year:</b> {{ car.year | date: 'yyyy' }}</p>
+        </div>
+      </div>
+
+      <!-- Right: Bid Form -->
+      <div class="car-form-section">
+        <form nz-form [formGroup]="bidForm" class="price-form" (ngSubmit)="bidCar(bidForm.value)">
+          <nz-form-item>
+            <nz-form-control
+              nzHasFeedback
+              [nzValidateStatus]="bidForm.get('price')"
+              nzErrorTip="Price is required">
+              <input nz-input formControlName="price" placeholder="Enter your bid price" />
+            </nz-form-control>
+          </nz-form-item>
+          <button nz-button nzType="primary" class="submit-button">Bid</button>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

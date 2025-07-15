@@ -1,0 +1,83 @@
+<div class="inner-content">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="dashboard-filter">
+            <form [formGroup]="searchCarForm" class="filter-grid">
+                <div class="filter-group">
+                    <nz-form-item>
+                        <nz-form-label nzFor="brand">Brand</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input Is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Brand" formControlName="brand">
+                                <nz-option *ngFor="let brand of listOfBrands" [nzLabel]="brand"
+                                    [nzValue]="brand"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="type">Type</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input Is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Type" formControlName="type">
+                                <nz-option *ngFor="let type of listOfType" [nzLabel]="type"
+                                    [nzValue]="type"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="color">Color</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input Is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Color" formControlName="color">
+                                <nz-option *ngFor="let color of listOfColor" [nzLabel]="color"
+                                    [nzValue]="color"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzFor="transmission">Transmission</nz-form-label>
+                        <nz-form-control nzErrorTip="This Input Is Required!">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Transmission"
+                                formControlName="transmission">
+                                <nz-option *ngFor="let transmission of listOfTransmission" [nzLabel]="transmission"
+                                    [nzValue]="transmission"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="filter-actions">
+                    <button nz-button nzType="primary" (click)="searchCar()">Search Car</button>
+                </div>
+            </form>
+        </div>
+    </nz-spin>
+</div>
+
+<!-- Car Listing -->
+<div class="car-results" *ngIf="cars.length > 0">
+    <div class="car-card" *ngFor="let car of cars">
+        <div class="car-grid">
+            <div class="car-image">
+                <img [src]="'data:image/jpeg;base64,' + car.returnedImg" alt="Car Image" />
+            </div>
+            <div class="car-info">
+                <h2>{{ car.brand }} - {{ car.name }}</h2>
+                <p>{{ car.description }}</p>
+                <hr />
+                <h5>
+                    Price: <b>${{ car.price }}</b> &nbsp; | &nbsp;
+                    Color: <b>{{ car.color }}</b> &nbsp; | &nbsp;
+                    Transmission: <b>{{ car.transmission }}</b> &nbsp; | &nbsp;
+                    Type: <b>{{ car.type }}</b> &nbsp; | &nbsp;
+                    Year: <b>{{ car.year | date: 'yyyy' }}</b>
+                </h5>
+                <hr />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cars.length === 0 && !isSpinning" class="no-result">
+    <p>No cars found for the selected filters.</p>
+</div>

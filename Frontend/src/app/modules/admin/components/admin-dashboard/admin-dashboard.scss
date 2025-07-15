@@ -1,0 +1,100 @@
+.car-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
+
+  &.card-hovered .car-card:not(.active) {
+    filter: blur(3px) brightness(0.6);
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+  }
+}
+
+.car-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  height: 260px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  &.active {
+    height: auto;
+    backdrop-filter: blur(18px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transform: scale(1.03);
+  }
+}
+
+.car-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .car-title {
+    font-size: 1.7rem;
+    color: #003973;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .car-description,
+  .car-meta,
+  .button-container {
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  .car-meta {
+    font-size: 0.9rem;
+    color: #1f2937;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.car-card.active .car-description,
+.car-card.active .car-meta,
+.car-card.active .button-container {
+  opacity: 1;
+  max-height: 500px;
+  transition-delay: 0.02s;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.car-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.car-title {
+  font-family: 'Cinzel', serif;
+}
+
+.car-details, .car-meta {
+  font-family: 'Poppins', sans-serif;
+}

@@ -50,7 +50,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getBids());
     }
 
-    @GetMapping("/car/bid/{bidId}/{status}")
+    @GetMapping("/car/bids/{bidId}/{status}")
     public ResponseEntity<?> changeBidStatus(@PathVariable Long bidId, @PathVariable String status){
         boolean success = adminService.changeBidStatus(bidId,status);
         if (success) {

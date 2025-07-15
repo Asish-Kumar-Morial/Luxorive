@@ -1,0 +1,268 @@
+/* === General Page Layout === */
+.bg {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Center Wrapper === */
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.child {
+  margin-top: 80px;
+  background-color: #ffffff;
+  padding: 48px 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 650px;
+  width: 100%;
+  animation: slideUp 0.8s ease-in-out;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === Header === */
+.imgDiv h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #003973;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto 32px;
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Form Elements === */
+input[nz-input],
+textarea[nz-input],
+nz-select,
+nz-year-picker {
+  width: 100%;
+  font-size: 15px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  min-height: 40px;
+}
+
+input[nz-input],
+textarea[nz-input],
+.ant-picker {
+  border: 1px solid #d9d9d9 !important;
+}
+
+input[nz-input]:focus,
+textarea[nz-input]:focus,
+.ant-picker-focused,
+.ant-picker:hover {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  outline: none;
+}
+
+nz-year-picker {
+  width: 100%;
+  display: block;
+}
+
+nz-year-picker .ant-picker {
+  width: 100%;
+  height: 42px;
+  border-radius: 6px;
+  font-size: 15px;
+  border: 1px solid #d9d9d9;
+}
+
+nz-year-picker .ant-picker-focused {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+::ng-deep nz-year-picker .ant-picker {
+  width: 100%;
+  height: 42px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+}
+
+::ng-deep nz-year-picker .ant-picker-focused,
+::ng-deep nz-year-picker .ant-picker:hover {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* === Validation === */
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched {
+  border-color: #52c41a !important;
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #ff4d4f !important;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+
+.ant-form-item-explain-error {
+  font-size: 13px;
+  color: #ff4d4f;
+  margin-top: 4px;
+  animation: fadeInError 0.3s ease;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Image Circle Styling === */
+/* Image container aligned to center */
+.file-upload-container {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically if needed */
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+/* Image wrapper */
+.profile-badge {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // border: 2px dashed #bfbfbf;
+  transition: border-color 0.6s ease;
+}
+
+.profile-badge:hover {
+  border-color: #1d82e2;
+}
+
+/* Circular image inside */
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.profile-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f2f5;
+  border: 2px dashed #bfbfbf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.profile-circle:hover {
+  border-color: #1890ff;
+}
+
+// .preview-image {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   border-radius: 50%;
+// }
+
+/* === Submit Button === */
+.login-form-button {
+  width: 100%;
+  height: 42px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #003973;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+}
+
+.login-form-button:hover {
+  transform: scale(1.03);
+  background-color: #40a9ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .child {
+    padding: 32px 20px;
+  }
+
+  .imgDiv h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .login-form-button {
+    font-size: 15px;
+    height: 40px;
+  }
+
+  .profile-badge {
+    width: 100px;
+    height: 100px;
+  }
+}

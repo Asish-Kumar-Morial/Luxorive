@@ -1,0 +1,124 @@
+.car-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f0f2f5;
+  height: 91vh;
+}
+
+.car-box-row {
+  display: flex;
+  gap: 24px;
+  background: #ffffff;
+  width: 100%;
+  max-width: 1300px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.car-image-section {
+  flex: 1 1 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .car-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.car-details-section {
+  flex: 2 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h2 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .car-meta p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+}
+
+.car-form-section {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  .price-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    input[nz-input] {
+      height: 40px;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .submit-button {
+      height: 35px;
+      font-weight: 600;
+      background-color: #1890ff;
+      border-color: #1890ff;
+      color: #fff;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #40a9ff;
+      border-color: #40a9ff;
+      box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+    }
+
+    .submit-button:active {
+      background-color: #096dd9;
+      border-color: #096dd9;
+      box-shadow: 0 2px 6px rgba(9, 109, 217, 0.5) inset;
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .car-box-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .car-image-section,
+  .car-details-section,
+  .car-form-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .price-form {
+    align-items: center;
+
+    input[nz-input], .submit-button {
+      width: 80%;
+    }
+  }
+}

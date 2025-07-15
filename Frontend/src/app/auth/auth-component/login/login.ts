@@ -33,24 +33,49 @@ export class Login {
     }
 
     this.isSpinning = true;
-    this.service.login(this.loginForm.value).subscribe((res) => {
-      if (res.userId != null) {
+
+    this.service.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        this.isSpinning = false;
+
+        // If token or user ID is missing — treat it as invalid login
+        if (!res.userId || !res.jwt) {
+          this.message.error("Bad credentials", { nzDuration: 5000 });
+          this.loginForm.reset(); // ✅ clear the form
+          return;
+        }
+
         const user = {
           id: res.userId,
           role: res.userRole
-        }
+        };
         StorageService.saveUser(user);
         StorageService.saveToken(res.jwt);
-        if(StorageService.isAdminLoggedIn())
+
+        // Navigate only if login data is valid
+        if (StorageService.isAdminLoggedIn()) {
           this.router.navigateByUrl("/admin/dashboard");
-        else if(StorageService.isCustomerLoggedIn())
+        } else if (StorageService.isCustomerLoggedIn()) {
           this.router.navigateByUrl("/customer/dashboard");
-      } else {
-        this.message.error("Bad credentials", { nzDuration: 5000});
+        } else {
+          this.message.error("Unrecognized user role!", { nzDuration: 5000 });
+          this.loginForm.reset(); // just in case
+        }
+      },
+      error: (err) => {
+        this.isSpinning = false; // ✅ stop spinner
+
+        if (err.status === 401 || err.status === 403) {
+          this.message.error("Bad credentials", { nzDuration: 5000 });
+        } else {
+          this.message.error("Something went wrong. Please try again!", { nzDuration: 5000 });
+        }
+
+        this.loginForm.reset(); // ✅ clear the form after failure
       }
-      this.isSpinning = false;
     });
   }
+
 
   getEmailError(): string | undefined {
     const control = this.loginForm.get('email');

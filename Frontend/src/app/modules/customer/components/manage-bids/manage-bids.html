@@ -1,0 +1,66 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Loading your bids...">
+  <div class="bids-container">
+    <h2 class="title">My Bids</h2>
+
+    <nz-table
+      #basicTable
+      [nzData]="bids"
+      [nzPageSize]="5"
+      [nzShowPagination]="true"
+      [nzBordered]="true"
+      [nzSize]="'middle'">
+
+      <thead>
+        <tr>
+          <th>Car Name</th>
+          <th>Car Brand</th>
+          <th>Seller</th>
+          <th>Bid Price (₹)</th>
+          <th>Status</th>
+          <th *ngIf="hasPendingBids">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let booking of basicTable.data">
+          <td>{{ booking.carName }}</td>
+          <td>{{ booking.carBrand }}</td>
+          <td>{{ booking.sellerName }}</td>
+          <td>{{ booking.price }}</td>
+          <td>
+            <strong
+              class="status"
+              [ngClass]="{
+                approved: booking.bidStatus === 'APPROVED',
+                rejected: booking.bidStatus === 'REJECTED',
+                pending: booking.bidStatus === 'PENDING'
+              }">
+              {{ booking.bidStatus }}
+            </strong>
+          </td>
+          <td *ngIf="hasPendingBids">
+            <ng-container *ngIf="booking.bidStatus === 'PENDING'">
+              <button
+                nz-button
+                nzType="primary"
+                nzShape="round"
+                class="action-btn approve-btn"
+                (click)="changeBookingStatus(booking.id, 'Approve')">
+                Approve
+              </button>
+
+              <button
+                nz-button
+                nzType="default"
+                nzShape="round"
+                class="action-btn reject-btn"
+                (click)="changeBookingStatus(booking.id, 'Reject')">
+                Reject
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</nz-spin>
