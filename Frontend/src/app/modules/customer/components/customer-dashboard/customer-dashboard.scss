@@ -1,210 +1,191 @@
-/* --- Analytics Card Styling --- */
-.analytics-card {
+/* --- Analytics Summary Section --- */
+.analytics-summary {
   width: 90%;
   margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-  animation: fadeIn 0.6s ease forwards;
-
-  .stat-box {
-    flex: 1 1 200px;
-    background: #ffffff;
-    margin: 20px;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    &:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 24px rgba(30, 64, 175, 0.15);
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      color: #003973;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      font-family: 'Cinzel', serif;
-    }
-  }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Individual Stat Box */
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.164);
+}
+
+/* Icon Styling */
+.icon-wrapper {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+.icon-wrapper.posted {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8); /* blue */
+}
+.icon-wrapper.sold {
+  background: linear-gradient(135deg, #16a34a, #15803d); /* green */
+}
+
+/* Text Styling */
+.stat-box h3 {
+  font-size: 1rem;
+  color: #374151;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.stat-box h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0.2rem 0 0;
+  font-family: 'Cinzel', serif;
 }
 
 
-/* --- Car Cards Grid Container --- */
+/* --- Car Cards Grid --- */
 .car-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2rem;
   padding: 2rem;
-
-  &.card-hovered .car-card:not(.active) {
-    filter: blur(2px) brightness(0.7);
-    transform: scale(0.96);
-    transition: all 0.3s ease-in-out;
-  }
 }
 
-/* --- Individual Car Card Styling --- */
+/* --- Car Card --- */
 .car-card {
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: all 0.4s ease;
-  position: relative;
-  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 260px;
-  animation: fadeIn 0.5s ease forwards;
+  height: 100%;
+  /* ensures equal card height */
+}
 
-  &.active {
-    height: auto;
-    backdrop-filter: blur(12px) saturate(160%);
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    transform: scale(1.04);
-    z-index: 10;
-  }
+.car-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* --- Car Image --- */
+.car-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
 .car-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  transition: transform 0.3s ease;
-
-  .car-card:hover & {
-    transform: scale(1.02);
-  }
+  transition: transform 0.4s ease;
 }
 
-/* --- Car Detail Section --- */
+.car-card:hover .car-image {
+  transform: scale(1.05);
+}
+
+.sold-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Car Details --- */
 .car-details {
-  padding: 1rem;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  /* pushes button to bottom */
+}
+
+.car-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+  font-family: 'Cinzel', serif;
+}
+
+.car-description {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 0.8rem;
+}
+
+.car-meta {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  flex-grow: 1;
+  /* takes up space so button stays at bottom */
+}
+
+/* --- Buy Button --- */
+.button-container {
+  margin-top: auto;
+  /* pushes button to bottom */
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.buy-button {
+  width: 100%; /* full width */
+  max-width: 250px;
+  min-height: 45px; /* ensure consistent height */
+  
+  display: flex;              /* center content */
+  justify-content: center;
   align-items: center;
 
-  .car-title {
-    font-size: 1.8rem;
-    color: #003973;
-    font-family: 'Cinzel', serif;
-    margin: 0.5rem 0;
-    text-align: center;
-  }
-
-  .car-description,
-  .car-meta,
-  .button-container {
-    opacity: 0;
-    max-height: 0;
-    transition: all 0.4s ease;
-    overflow: hidden;
-  }
-
-  .car-meta {
-    font-size: 0.95rem;
-    color: #374151;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-
-    .buy-button {
-      padding: 10px 24px;
-      height: 45%;
-      background: linear-gradient(to right, #003973, #0074d9);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      transition: transform 0.3s ease, background 0.3s ease;
-
-      &:hover {
-        background: #2563eb;
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
-      }
-
-      &:active {
-        transform: scale(0.96);
-        background: #1d4ed8;
-      }
-    }
-
-    .sold-image {
-      width: 150px;
-      height: auto;
-      opacity: 0.9;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-      margin-top: 6px;
-    }
-  }
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: normal; /* prevent text shifting */
+  padding: 0.75rem 1.5rem; /* balanced padding */
 }
 
-/* --- Reveal Elements on Hover --- */
-.car-card.active .car-description,
-.car-card.active .car-meta,
-.car-card.active .button-container {
-  opacity: 1;
-  max-height: 1000px;
-  transition-delay: 0.1s;
-}
-
-/* --- Fade In Animation --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.buy-button:hover {
+  background: linear-gradient(90deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
 }

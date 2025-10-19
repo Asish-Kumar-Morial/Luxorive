@@ -4,6 +4,7 @@ import { Login } from './auth/auth-component/login/login';
 import { Signup } from './auth/auth-component/signup/signup';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   {path: "login",component:Login},
   {path: "signup",component:Signup},
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
   {
     path: "customer",
     loadChildren:()=> import("./modules/customer/customer-module").then(e=>e.CustomerModule)
-  }
+  },
+  { path: '**', redirectTo: 'login' } 
 ];
 
 @NgModule({
